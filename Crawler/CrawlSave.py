@@ -6,7 +6,7 @@ model = Model.MainModel.MainModel.GetInstance()
 
 
 def saveData():
-    if "odds500" in model['getData']:
+    if "odds500" in model.getData:
         saveFile(model.getData['odds500'])
         model.view["main"].outPutText(model.datamodel['info']['output'])
     else:
