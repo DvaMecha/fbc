@@ -2,9 +2,10 @@
 from view.QtView import *
 from PyQt5.QtWidgets import QApplication
 import Crawler.CrawlSave as fileManager
-from Crawler.Crawl import Crawler
+from Crawler import Crawl
 import Model.MainModel as Model
 import json
+import requests
 import sys
 
 # 定义变量
@@ -19,7 +20,7 @@ def initApp():
     fp = open(jsfile, 'r')
     model.datamodel = json.load(fp)
     fp.close()
-    model.crawler = Crawler()
+    model.crawler = Crawl.Crawler()
     showHelp()
 
 

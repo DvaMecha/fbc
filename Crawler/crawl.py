@@ -1,5 +1,5 @@
-import requests
 import Model.MainModel
+import requests
 import time
 from bs4 import BeautifulSoup
 from Crawler.CrawlRule import *
