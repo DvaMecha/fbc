@@ -1,17 +1,17 @@
 # coding=utf-8
 from view.QtView import *
-
-import Crawler.fileBusiness as fileManager
-import Crawler.crawl as crawl
-import Crawler.crawlrule as rule
-import Model.MainModel
+from PyQt5.QtWidgets import QApplication
+import Crawler.CrawlSave as fileManager
+from Crawler.Crawl import Crawler
+import Model.MainModel as Model
 import json
+import sys
 
 # 定义变量
 eventModel = {}
 websites = ()
-model = Model.MainModel.MainModel.GetInstance()
-url = 'http://odds.500.com/'
+model = Model.MainModel.GetInstance()
+
 
 
 def initApp():
@@ -19,43 +19,30 @@ def initApp():
     fp = open(jsfile, 'r')
     model.datamodel = json.load(fp)
     fp.close()
+    model.crawler = Crawler()
     showHelp()
 
 
 def initEvent():
-    m = {
+    model.events = {
         'init': initApp,
-        'getDatas': runCrawl,
-        'save': saveData,
-        'getInfo': getWebInfo,
-        'showHelp': showHelp
+        'runCrawl': runCrawl,
+        'save': fileManager.saveData,
+        'showHelp': showHelp,
+        'getMatchs': getMatchList
     }
-    return m
+    return model.events
 
 
-def runCrawl(t):
+def runCrawl():
     main.outPutText('开始抓取', True)
-    d = crawl.getDatas(url)
-    model.getData['all'] = d
-    model.getData[t] = analysisHtml(d, t)
+    model.crawler.runCrawler('odds500')
+    # model.getData['all'] = d
+    # model.getData[t] = rule.analysisHtml(d, t)
 
-
-def analysisHtml(h: object, t: str) -> object:
-    t = rule.analysisHtml(h, t)
-    return t
-
-
-def getWebInfo():
-    crawl.getWebInfo(url)
-
-
-def saveData():
-    if "odds" in model.getData:
-        fileManager.saveFile(model.getData['odds'])
-        main.outPutText('输出完成,请在output中查看')
-    else:
-        main.outPutText('请先抓取赔率数据', True)
-
+def getMatchList():
+    main.outPutText('开始获取比赛列表', True)
+    model.crawler.runCrawler('list')
 
 def showHelp():
     main.outPutText(
@@ -97,11 +84,10 @@ def showHelp():
 
 
 # 获得窗口对象
-if __name__ == "__main__":
-    import sys
-    app = QApplication(sys.argv)
-    global main
-    main = QtView(initEvent())
-    model.view['main'] = main
-    initApp()
-    app.exec_()
+
+
+app = QApplication(sys.argv)
+main = QtView(initEvent())
+model.view['main'] = main
+initApp()
+app.exec_()

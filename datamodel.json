@@ -1,4 +1,7 @@
 {
+  "urls":{
+    "odds500":"http://odds.500.com/"
+  },
   "info":{
     "wel":"欢迎",
     "start":"开始抓取",

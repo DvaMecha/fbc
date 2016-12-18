@@ -1,23 +1,18 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtWidgets import QMainWindow, QTextEdit, QAction, QApplication
+from PyQt5.QtWidgets import QMainWindow, QTextEdit, QAction
 from PyQt5.QtGui import QIcon
 
 
 class QtView(QMainWindow):
 
     # noinspection PyArgumentList
-    def __init__(self, eventmod):
+    def __init__(self, eventsmod: object):
         super().__init__()
-        self.eventMod = eventmod
+        self.textEdit = QTextEdit()
+        self.eventMod=eventsmod
         self.initUI()
-
-    def initMenu(self):
-        menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&File')
-        # fileMenu.addAction(exitAction)
-        return menubar
 
     def outPutText(self, t, f=False):
         if f:
@@ -25,6 +20,7 @@ class QtView(QMainWindow):
         else:
             self.textEdit.append(t + '\n')
 
+    # noinspection PyUnresolvedReferences
     def initToobar(self):
         exitAction = QAction(QIcon('res/icon/quit.png'), 'Exit', self)
         exitAction.setShortcut('Ctrl+Q')
@@ -33,19 +29,19 @@ class QtView(QMainWindow):
 
         initAction = QAction(QIcon('res/icon/init.png'), 'Start', self)
         initAction.setStatusTip('Get All Data!')
-        initAction.triggered.connect(lambda: self.eventMod['getDatas']("odds"))
+        initAction.triggered.connect(self.eventMod["runCrawl"])
 
         testAction = QAction(QIcon('res/icon/test.png'), 'Help', self)
         testAction.setStatusTip('!')
-        testAction.triggered.connect(self.eventMod['showHelp'])
+        testAction.triggered.connect(self.eventMod["showHelp"])
 
         listAction = QAction(QIcon('res/icon/list.png'), 'List', self)
         listAction.setStatusTip('Get Teams List!')
-        listAction.triggered.connect(lambda: self.eventMod['getDatas']("list"))
+        listAction.triggered.connect(self.eventMod["getMatchs"])
 
         saveAction = QAction(QIcon('res/icon/save.png'), 'Save', self)
         saveAction.setStatusTip('Save to Txt')
-        saveAction.triggered.connect(self.eventMod['save'])
+        saveAction.triggered.connect(self.eventMod["save"])
 
         toolbar = self.addToolBar('Tool')
         toolbar.addAction(initAction)
@@ -55,10 +51,11 @@ class QtView(QMainWindow):
         toolbar.addAction(exitAction)
 
     def initUI(self):
-        self.textEdit = QTextEdit()
+        """
+        :rtype: object
+        """
         self.setCentralWidget(self.textEdit)
         self.statusBar()
-        self.initMenu()
         self.initToobar()
         self.setGeometry(300, 100, 1050, 800)
         self.setWindowTitle('Main window')

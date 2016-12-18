@@ -5,16 +5,18 @@ class MainModel():
     '''
         datamodel 一个单例模式的数据mod
     '''
-
-    # 定义静态变量实例
-    instance = None
     mutex = threading.Lock()
-    datamodel = {}
-    getData={}
-    view={}
-    event={}
+    instance = None
     def __init__(self):
-        pass
+        self.datamodel = {}
+        self.getData={}
+        self.threads=[]
+        self.view={}
+        self.events={}
+        self.match_queue=[]
+        self.max_threads=20
+        self.crawlLock=False
+
 
     @staticmethod
     def GetInstance():
