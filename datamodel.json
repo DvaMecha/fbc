@@ -1,0 +1,106 @@
+{
+  "info":{
+    "wel":"欢迎",
+    "start":"开始抓取",
+    "nodata":"请先抓取数据",
+    "nomatch":"目前似乎没有所需联赛的比赛，过段时间再试吧",
+    "lgnomatch":"联赛目前似乎没有比赛，请过段时间再试",
+    "output":"输出完成,请在output中查看"
+  },
+  "web": [
+    {
+      "name": "竞猜官方",
+      "id":"jc",
+      "cid_500":1
+    },{
+      "name": "澳门",
+      "id":"am",
+      "cid_500":5
+    },{
+      "name": "威廉",
+      "id":"wl",
+      "url":"http://sports.williamhill.com/bet/zh-cn",
+      "cid_500":293
+    },{
+      "name": "立博",
+      "id":"lb",
+      "url":"Sports.ladbrokes.com",
+      "cid_500":2
+    },{
+      "name": "韦德",
+      "id":"wd",
+      "url":"http://www.19461188.com/sport/zh-cn/football",
+      "cid_500":6
+    },{
+      "name": "Interwetten",
+      "id":"iw",
+      "cid_500":4,
+      "url":"www.interwetten.com"
+    },{
+      "name":"BET365",
+      "id":"bet",
+      "url":"http://www.bet365.com/#/AC/B1/C1/D13/E40/F137/S1/",
+      "cid_500":3
+    },{
+      "name":"SNAI",
+      "id":"snai",
+      "cid_500":8
+    },{
+      "name":"Bwin",
+      "id":"bwin",
+      "url":"https://sports.bwin.com/en/sports#dateFilter=today&sportId=4",
+      "cid_500":11
+    },{
+      "name":"nuibet",
+      "id":"nuibet",
+      "url":"https://www.unibet.com/betting#home",
+      "cid_500":291
+    },{
+      "name":"博天堂",
+      "id":"btt",
+      "cid_500":275
+    },{
+      "name":"易胜博",
+      "id":"ysb",
+      "url":"http://www.bb248.com/sb/sportsbook.aspx",
+      "cid_500":0
+    }
+  ],
+  "league":{
+    "BL":{
+      "name":"德甲",
+      "id500":3901,
+      "mid_500":58
+    },
+    "L1":{
+      "name":"法甲",
+      "id500":3826,
+      "mid_500":107
+    },
+    "SA":{
+      "name":"意甲",
+      "id500":3990,
+      "mid_500":92
+    },
+    "FA":{
+      "name":"英超",
+      "id500":3822,
+      "mid_500":106
+    },
+    "LL":{
+      "name":"西甲",
+      "id500":3974,
+      "mid_500":93
+    },
+    "AL":{
+      "name":"美职",
+      "id500":3756,
+      "mid_500":40
+    },
+    "AS":{
+      "name":"澳超",
+      "id500":3853,
+      "mid_500":312
+    }
+  }
+}

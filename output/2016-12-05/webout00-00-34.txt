@@ -1,0 +1,1 @@
+{'LL': {'lgname': '西甲', 'matchs': []}, 'AS': {'lgname': '澳超', 'matchs': []}, 'L1': {'lgname': '法甲', 'matchs': []}, 'BL': {'lgname': '德甲', 'matchs': []}, 'FA': {'lgname': '英超', 'matchs': []}, 'SA': {'lgname': '意甲', 'matchs': []}, 'AL': {'lgname': '美职', 'matchs': []}}
